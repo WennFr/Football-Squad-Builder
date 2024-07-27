@@ -1,0 +1,69 @@
+/* ==========================================================================
+ Grid settings
+========================================================================== */
+/* Padding between columns. Gets divided in half for the left and right. */
+$grid-gutter: 64px !default;
+
+/* Number of columns in the grid.*/
+$grid-columns: 12;
+
+/* ==========================================================================
+ Breakpoint sizes
+========================================================================== */
+
+$xs: 0px;
+$sm: 768px;
+$md: 992px;
+$lg: 1152px;
+$max: 1201px;
+
+$breakpoints: (
+    'xs': (
+        min-width: $xs,
+    ),
+    'sm': (
+        min-width: $sm,
+    ),
+    'md': (
+        min-width: $md,
+    ),
+    'lg': (
+        min-width: $lg,
+    ),
+    'max': (
+        min-width: $max,
+    ),
+);
+
+/* ==========================================================================
+Fonts
+========================================================================== */
+$base-font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+
+/* ==========================================================================
+Colors
+========================================================================== */
+
+/*Brand colors*/
+$brand-primary: #38405f;
+$brand-secondary: #59546c;
+/*Other-colors*/
+$text: #0e131f;
+
+$color-theme: #A27B5C;
+
+$color-dark-1: #2c3639;
+$color-dark-2: #3f4e4f;
+
+$color-light-1: #ffffff;
+$color-light-2: #dcd7c9;
+
+@mixin default-colors{
+    background-color: $color-dark-1;
+    color: $color-light-2;
+}
+
+/* ==========================================================================
+Misc
+========================================================================== */
+$radius: 12px;

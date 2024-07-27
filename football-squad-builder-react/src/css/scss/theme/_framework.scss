@@ -1,0 +1,64 @@
+/// <reference path="../__references.scss" />
+@use '../tools' as *;
+
+/* ==========================================================================
+ General Framework styles
+ ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+
+}
+
+body {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+
+    background-color: $color-dark-1;
+    color: $color-light-2;
+
+    @mixin default-colors {
+        background-color: $color-dark-1;
+        color: $color-light-2;
+    }
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.srOnly {
+    @extend %srOnly;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ==========================================================================
+ Framework components
+ ========================================================================== */
+
+.main {
+    color: $brand-primary;
+}
+
+.container {
+    @extend %container;
+}
+
+.row {
+    @extend %row;
+}
+
+.flexrow {
+    @extend %flexrow;
+}

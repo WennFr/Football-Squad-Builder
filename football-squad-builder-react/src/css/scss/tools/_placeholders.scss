@@ -1,0 +1,82 @@
+/// <reference path="../__references.scss" />
+@use 'variables' as *;
+@use 'mixins' as *;
+
+/* ==========================================================================
+ Commons
+ ========================================================================== */
+%listreset {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+%buttonreset {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+%srOnly {
+    position: absolute;
+    left: -99999em;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+/* ==========================================================================
+ Grid components
+ ========================================================================== */
+%container {
+    width: 100%;
+    padding-right: calc($grid-gutter / 2);
+    padding-left: calc($grid-gutter / 2);
+    margin: 0 auto;
+
+    @include breakpoint(sm) {
+        max-width: $sm;
+    }
+
+    @include breakpoint(md) {
+        max-width: $md;
+    }
+
+    @include breakpoint(lg) {
+        max-width: $lg;
+    }
+}
+
+%row {
+    display: block;
+    margin-left: calc($grid-gutter / -2);
+    margin-right: calc($grid-gutter / -2);
+}
+
+%flexrow {
+    @extend %row;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/*
+    Placeholders for columns are generated in _mixins.scss
+    Gnerated placeholders are:
+    .col-sm-{1-n}
+    .col-md-{1-n}
+    .col-lg-{1-n}
+    where n is number of columns declared in  _variables.scss
+*/
+
+//För utfallande direkt under 'container'"
+%breakout {
+    min-width: 100vw;
+    margin-left: calc((50% - 50vw));
+    margin-right: calc((50% - 50vw));
+}

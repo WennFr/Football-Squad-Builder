@@ -1,0 +1,65 @@
+/// <reference path="../__references.scss" />
+@use 'variables' as *;
+@use 'sass:math';
+
+@mixin breakpoint($state) {
+    @if map-has-key($breakpoints, $state) {
+        @media #{inspect(map-get($breakpoints, $state))} {
+            @content;
+        }
+    } @else {
+        @warn "Couldn't find a breakpoint named `#{$state}`.";
+    }
+}
+//to use: @include breakpoint(xs/sm/md/lg) { //.. styles here  ..// }
+
+@for $columns from 1 through $grid-columns {
+    %flexcol-#{$columns} {
+        padding-right: math.div($grid-gutter, 2);
+        padding-left: math.div($grid-gutter, 2);
+        flex: 0 0 (math.div(100%, $grid-columns) * $columns);
+        max-width: math.div(100%, $grid-columns) * $columns;
+    }
+
+    %col-#{$columns} {
+        padding-right: math.div($grid-gutter, 2);
+        padding-left: math.div($grid-gutter, 2);
+        width: math.div(100%, $grid-columns) * $columns;
+    }
+
+    %col-offset-#{$columns} {
+        margin-left: math.div(100%, $grid-columns) * $columns;
+    }
+
+    %col-offset-right-#{$columns} {
+        margin-right: math.div(100%, $grid-columns) * $columns;
+    }
+}
+
+@each $bp, $mq in $breakpoints {
+    @include breakpoint($bp) {
+        @for $columns from 1 through $grid-columns {
+            %flexcol-#{$bp}-#{$columns} {
+                flex: 0 0 math.div(100%, $grid-columns) * $columns;
+                max-width: math.div(100%, $grid-columns) * $columns;
+            }
+
+            %col-#{$bp}-#{$columns} {
+                width: math.div(100%, $grid-columns) * $columns;
+            }
+
+            %col-#{$bp}-offset-#{$columns} {
+                margin-left: math.div(100%, $grid-columns) * $columns;
+            }
+
+            %col-#{$bp}-offset-right-#{$columns} {
+                margin-right: math.div(100%, $grid-columns) * $columns;
+            }
+        }
+    }
+}
+
+//return column-width in pixels
+@function columnswidth($cols, $w) {
+    @return ((math.div($cols, $grid-columns)) * $w);
+}

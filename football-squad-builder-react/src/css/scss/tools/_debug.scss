@@ -1,0 +1,203 @@
+/// <reference path="../__references.scss" />
+@use 'mixins' as *;
+@use 'placeholders' as *;
+@use 'variables' as *;
+
+.debug {
+    * {
+        background-color: rgba(255, 0, 0, 0.2);
+    }
+
+    * * {
+        background-color: rgba(0, 255, 0, 0.2);
+    }
+
+    * * * {
+        background-color: rgba(0, 0, 255, 0.2);
+    }
+
+    * * * * {
+        background-color: rgba(255, 0, 255, 0.2);
+    }
+
+    * * * * * {
+        background-color: rgba(0, 255, 255, 0.2);
+    }
+
+    * * * * * * {
+        background-color: rgba(255, 255, 0, 0.2);
+    }
+
+    * * * * * * * {
+        background-color: rgba(255, 0, 0, 0.2);
+    }
+
+    * * * * * * * * {
+        background-color: rgba(0, 255, 0, 0.2);
+    }
+
+    * * * * * * * * * {
+        background-color: rgba(0, 0, 255, 0.2);
+    }
+}
+
+.demo-col-1 {
+    @extend %flexcol-12!optional;
+    @extend %flexcol-md-1!optional;
+}
+
+.demo-col-2 {
+    @extend %flexcol-12!optional;
+    @extend %flexcol-md-2!optional;
+}
+
+.demo-col-3 {
+    @extend %flexcol-12!optional;
+    @extend %flexcol-md-3!optional;
+}
+
+.demo-col-4 {
+    @extend %flexcol-12!optional;
+    @extend %flexcol-md-4!optional;
+}
+
+.demo-col-5 {
+    @extend %flexcol-12!optional;
+    @extend %flexcol-md-5!optional;
+}
+
+.demo-col-6 {
+    @extend %flexcol-12!optional;
+    @extend %flexcol-md-6!optional;
+}
+
+.demo-col-7 {
+    @extend %flexcol-12!optional;
+    @extend %flexcol-md-7!optional;
+}
+
+.demo-col-8 {
+    @extend %flexcol-12!optional;
+    @extend %flexcol-md-8!optional;
+}
+
+.demo-col-9 {
+    @extend %flexcol-12!optional;
+    @extend %flexcol-md-9!optional;
+}
+
+.demo-col-10 {
+    @extend %flexcol-12!optional;
+    @extend %flexcol-md-10!optional;
+}
+
+.demo-col-11 {
+    @extend %flexcol-12!optional;
+    @extend %flexcol-md-11!optional;
+}
+
+.demo-col-12 {
+    @extend %flexcol-12!optional;
+    @extend %flexcol-md-12!optional;
+}
+
+.demo-offset-1 {
+    @extend %col-md-offset-1!optional;
+}
+
+.demo-offset-2 {
+    @extend %col-md-offset-2!optional;
+}
+
+.demo-offset-3 {
+    @extend %col-md-offset-3!optional;
+}
+
+.demo-offset-4 {
+    @extend %col-md-offset-4!optional;
+}
+
+.demo-offset-5 {
+    @extend %col-md-offset-5!optional;
+}
+
+.demo-offset-6 {
+    @extend %col-md-offset-6!optional;
+}
+
+.demo-offset-7 {
+    @extend %col-md-offset-7!optional;
+}
+
+.demo-offset-8 {
+    @extend %col-md-offset-8!optional;
+}
+
+.demo-offset-9 {
+    @extend %col-md-offset-9!optional;
+}
+
+.demo-offset-10 {
+    @extend %col-md-offset-10!optional;
+}
+
+.demo-offset-11 {
+    @extend %col-md-offset-11!optional;
+}
+
+.demo-offset-12 {
+    @extend %col-md-offset-12!optional;
+}
+
+.demo-offset-1 {
+    @extend %col-md-offset-1!optional;
+}
+
+.demo-offset-2 {
+    @extend %col-md-offset-2!optional;
+}
+
+.demo-offset-3 {
+    @extend %col-md-offset-3!optional;
+}
+
+.demo-offset-4 {
+    @extend %col-md-offset-4!optional;
+}
+
+.demo-offset-5 {
+    @extend %col-md-offset-5!optional;
+}
+
+.demo-offset-6 {
+    @extend %col-md-offset-6!optional;
+}
+
+.demo-offset-7 {
+    @extend %col-md-offset-7!optional;
+}
+
+.demo-offset-8 {
+    @extend %col-md-offset-8!optional;
+}
+
+.demo-offset-9 {
+    @extend %col-md-offset-9!optional;
+}
+
+.demo-offset-10 {
+    @extend %col-md-offset-10!optional;
+}
+
+.demo-offset-11 {
+    @extend %col-md-offset-11!optional;
+}
+
+.demo-offset-12 {
+    @extend %col-md-offset-12!optional;
+}
+
+.fill {
+    @extend %breakout;
+    background-color: pink;
+}

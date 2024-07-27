@@ -1,0 +1,21 @@
+/// <reference path="../__references.scss" />
+@use '../tools' as *;
+// Font faces and imports here
+
+// Set base typo here
+// html is set to 62.5% so that all
+// the REM measurements are based on 10px sizing.
+// So basically 1.5rem = 15px :)
+
+html {
+    font-size: 62.5%;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: $base-font-family;
+    font-size: 1.8rem;
+    line-height: 1.625;
+    color: $text;
+    color: $color-light-2;
+}
