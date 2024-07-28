@@ -21,13 +21,7 @@ body {
     display: flex;
     flex-direction: column;
 
-    background-color: $color-dark-1;
-    color: $color-light-2;
-
-    @mixin default-colors {
-        background-color: $color-dark-1;
-        color: $color-light-2;
-    }
+    
 }
 
 img {
