@@ -6,8 +6,12 @@ function Home() {
   return (
     <>
     <div className='wrapper' >
-        
-        <LineupCreator/>
+        <div className='wrapper-inner'>
+
+
+              <LineupCreator/>
+
+        </div>
     </div>
     </>
   )

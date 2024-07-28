@@ -1,0 +1,16 @@
+/// <reference path="../__references.scss" />
+@use '../tools' as *;
+
+
+.sidebar {
+    width: 400px;
+    background-color: $brand-secondary;
+    color: $color-light-1;
+    font-weight: 400;
+    border-radius: 25px;
+    height: 100vh;
+    //  &-section {
+      
+    //  }
+
+}

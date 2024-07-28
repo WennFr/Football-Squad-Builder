@@ -38,7 +38,7 @@ $breakpoints: (
 /* ==========================================================================
 Fonts
 ========================================================================== */
-$base-font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+$base-font-family: PremierSans-Heavy, Arial, Helvetica Neue, Helvetica, sans-serif;;
 
 /* ==========================================================================
 Colors
@@ -46,7 +46,7 @@ Colors
 
 /*Brand colors*/
 $brand-primary: #38405f;
-$brand-secondary: #59546c;
+$brand-secondary: #37003c;
 /*Other-colors*/
 $text: #0e131f;
 
@@ -61,6 +61,12 @@ $color-light-2: #dcd7c9;
 @mixin default-colors{
     background-color: $color-dark-1;
     color: $color-light-2;
+}
+
+@mixin justify-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ==========================================================================

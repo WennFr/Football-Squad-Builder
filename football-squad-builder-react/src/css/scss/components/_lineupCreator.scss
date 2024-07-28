@@ -1,0 +1,23 @@
+/// <reference path="../__references.scss" />
+ @use '../tools' as *;
+
+
+.lineup{
+
+    .heading{
+        @include justify-center;
+        margin-bottom: 2rem;
+    }
+
+    &-creator{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+        gap: 20px;
+       
+    
+    }
+
+}
+
+
