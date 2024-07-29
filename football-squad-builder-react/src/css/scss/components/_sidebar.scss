@@ -3,12 +3,25 @@
 
 
 .sidebar {
-    width: 400px;
+    width: 460px;
     background-color: $brand-secondary;
     color: $color-light-1;
     font-weight: 400;
     border-radius: 25px;
     height: 100vh;
+    display: flex;
+    flex-direction: column;    
+    justify-content: flex-start;
+
+   
+
+    &-nav{
+        margin-top: 20px;
+        display: flex;
+        justify-content:space-evenly;
+        margin-bottom: 20px;
+    }
+
     //  &-section {
       
     //  }
