@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "fPx/XRD2QHbihmXX2Now1W10lArLISTu30JM1TGTF5U=",
+  "Source": "App.WebAPI",
+  "BasePath": "_content/App.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
