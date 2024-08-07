@@ -33,7 +33,7 @@ namespace App.WebAPI.Services
 
         }
 
-        public async Task<ClubDTO[]?> GetCompetitionClubs(string competitionId)
+        public async Task<ClubDTO[]?> GetAllCompetitionClubs(string competitionId)
         {
             var client = new HttpClient();
 
@@ -54,8 +54,34 @@ namespace App.WebAPI.Services
 
             }
 
-            return responseObj.Clubs;
+            return responseObj?.Clubs;
         }
+
+        public async Task<PlayerDTO[]?> GetAllClubPlayers(string clubId)
+        {
+            var client = new HttpClient();
+
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri($"https://transfermarkt-api.fly.dev/clubs/{clubId}/players")
+            };
+
+            PlayersResponse? responseObj = null;
+
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync();
+
+                responseObj = JsonConvert.DeserializeObject<PlayersResponse>(body);
+
+            }
+
+            return responseObj?.Players;
+        }
+
+
 
     }
 }

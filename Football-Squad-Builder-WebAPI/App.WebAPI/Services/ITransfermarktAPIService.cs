@@ -6,7 +6,9 @@ namespace App.WebAPI.Services
     {
         Task<CompetitionDTO?> GetCompetition(string competitionName);
 
-        Task<ClubDTO[]?> GetCompetitionClubs(string competitionId);
+        Task<ClubDTO[]?> GetAllCompetitionClubs(string competitionId);
+
+        Task<PlayerDTO[]?> GetAllClubPlayers(string clubId);
 
     }
 }

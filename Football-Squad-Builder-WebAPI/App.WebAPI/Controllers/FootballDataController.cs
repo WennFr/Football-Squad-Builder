@@ -51,7 +51,7 @@ namespace App.WebAPI.Controllers
         public async Task<ActionResult<List<ClubDTO>>> GetClubsByCompetition(string competitionId)
         {
 
-            var clubsDTOs = await _transfermarktAPIService.GetCompetitionClubs(competitionId);
+            var clubsDTOs = await _transfermarktAPIService.GetAllCompetitionClubs(competitionId);
 
             if (clubsDTOs == null || clubsDTOs.Count() == 0)
             {
@@ -64,6 +64,26 @@ namespace App.WebAPI.Controllers
             }
 
         }
+
+        [HttpGet]
+        [Route("Players/{clubId}")]
+        public async Task<ActionResult<List<PlayerDTO>>> GetPlayersByClub(string clubId)
+        {
+
+            var playerDTOs = await _transfermarktAPIService.GetAllClubPlayers(clubId);
+
+            if (playerDTOs == null || playerDTOs.Count() == 0)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                return Ok(playerDTOs);
+            }
+
+        }
+
+
 
 
     }
