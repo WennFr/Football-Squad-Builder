@@ -1,5 +1,6 @@
-﻿using App.WebAPI.DTO;
+﻿using App.WebAPI.API.DTO;
 using App.WebAPI.Services;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.WebAPI.Controllers
@@ -41,6 +42,26 @@ namespace App.WebAPI.Controllers
             var competitions = competitionDTOs.Where(dto => dto != null).ToList();
 
             return Ok(competitions);
+
+        }
+
+
+        [HttpGet]
+        [Route("Clubs/{competitionId}")]
+        public async Task<ActionResult<List<ClubDTO>>> GetClubsByCompetition(string competitionId)
+        {
+
+            var clubsDTOs = await _transfermarktAPIService.GetCompetitionClubs(competitionId);
+
+            if (clubsDTOs == null || clubsDTOs.Count() == 0)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                return Ok(clubsDTOs);
+
+            }
 
         }
 

@@ -1,4 +1,4 @@
-﻿namespace App.WebAPI.DTO
+﻿namespace App.WebAPI.API.DTO
 {
     public class CompetitionDTO
     {
