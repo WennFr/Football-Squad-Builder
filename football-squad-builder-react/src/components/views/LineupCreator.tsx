@@ -40,7 +40,7 @@ function LineupCreator() {
                     <div className="football-field" style={{ backgroundImage: `url(${footballField})` }}></div>
                     <aside className='sidebar'>
                         <div className='sidebar-nav'>
-                            <select className='search-dropdown'>
+                            <select className='sidebar-dropdown'>
                                 <option value="">Select League</option>
                                 {competitions.map((competition) => (
                                     <option key={competition.id} value={competition.id}>
@@ -48,13 +48,13 @@ function LineupCreator() {
                                     </option>
                                 ))}
                             </select>
-                            <select className='search-dropdown'>
+                            <select className='sidebar-dropdown'>
                                 <option value="">Select Club</option>
                                 <option value="club1">Club 1</option>
                                 <option value="club2">Club 2</option>
                                 {/* Add more clubs as needed */}
                             </select>
-                            <select className='search-dropdown'>
+                            <select className='sidebar-dropdown'>
                                 <option value="">Select Player</option>
                                 <option value="player1">Player 1</option>
                                 <option value="player2">Player 2</option>
