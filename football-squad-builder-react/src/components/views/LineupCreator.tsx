@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import footballField from '../../assets/football-field-1.jpg';
 import { useCompetitions } from './hooks/useCompetitions';
 import { useClubs } from './hooks/useClubs';
+import { usePlayers } from './hooks/usePlayers';
+
 
 
 
@@ -11,6 +13,9 @@ function LineupCreator() {
     const [selectedCompetition, setSelectedCompetition] = useState<string | null>(null);
     const { clubs, loading: clubsLoading, error: clubsError } = useClubs(selectedCompetition);
     const [selectedClub, setSelectedClub] = useState<string | null>(null);
+    const { players, loading: playersLoading, error: playersError } = usePlayers(selectedClub);
+    const [selectedPlayer, setSelectedPlayer] = useState<string | null>(null);
+
 
     return (
         <>
@@ -22,7 +27,7 @@ function LineupCreator() {
                     <div className="football-field" style={{ backgroundImage: `url(${footballField})` }}></div>
                     <aside className='sidebar'>
                         <div className='sidebar-nav'>
-                            <select 
+                            <select
                                 className='sidebar-dropdown'
                                 onChange={(e) => setSelectedCompetition(e.target.value)}
                                 value={selectedCompetition || ''}
@@ -34,7 +39,7 @@ function LineupCreator() {
                                     </option>
                                 ))}
                             </select>
-                            <select 
+                            <select
                                 className='sidebar-dropdown'
                                 onChange={(e) => setSelectedClub(e.target.value)}
                                 value={selectedClub || ''}
@@ -46,18 +51,30 @@ function LineupCreator() {
                                     </option>
                                 ))}
                             </select>
-                            <select className='sidebar-dropdown'>
+                            {/* <select className='sidebar-dropdown'
+                                onChange={(e) => setSelectedPlayer(e.target.value)}
+                                value={selectedPlayer || ''}
+                            >
                                 <option value="">Select Player</option>
-                                <option value="player1">Player 1</option>
-                                <option value="player2">Player 2</option>
-                                {/* Add more players as needed */}
-                            </select>
-                        </div>
-                        <div className='sidebar-section'>
-                            <h2>Players</h2>
-                            <ol>
+                                {players.map((player) => (
+                                    <option key={player.id} value={player.id}>
+                                        {player.name}
+                                    </option>
+                                ))}
 
-                            </ol>
+                            </select> */}
+                        </div>
+                        <div className='sidebar-players'>
+                            <div className='sidebar-players-heading'>
+                                <h2 >Players</h2>
+                            </div>
+                            <div className='sidebar-players-cards'>
+                                {players.map((player) => (
+                                    <ol key={player.id}>
+                                        {player.name}
+                                    </ol>
+                                ))}
+                            </div>
                         </div>
                     </aside>
                 </div>

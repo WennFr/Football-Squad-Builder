@@ -30,6 +30,20 @@
         border-radius: 4px;
     }
 
+    &-players{
+        overflow: scroll;
+        &-heading{
+            display: flex;
+            justify-content: center;
+        }
+
+        &-cards{
+            display: flex;
+            flex-direction: column;  
+            justify-content: center;
+        }
+    }
+
     //  &-section {
       
     //  }
