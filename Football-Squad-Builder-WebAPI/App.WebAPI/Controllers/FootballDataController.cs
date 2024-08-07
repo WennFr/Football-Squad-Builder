@@ -1,6 +1,5 @@
 ﻿using App.WebAPI.DTO;
 using App.WebAPI.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.WebAPI.Controllers
@@ -27,26 +26,19 @@ namespace App.WebAPI.Controllers
                 "Superettan",
                 "La Liga",
                 "Serie A",
-                "Elitserien",
+                "Eliteserien",
                 "Superliga",
                 "Bundesliga",
                 "Premier League",
             };
 
-            var competitions = new List<CompetitionDTO>();
 
+            var tasks = competitionNamesList.Select(competitionName =>
+                          _transfermarktAPIService.GetCompetition(competitionName));
 
-            foreach (var competitionName in competitionNamesList)
-            {
+            var competitionDTOs = await Task.WhenAll(tasks);
 
-                var competitionDTO = await _transfermarktAPIService.GetCompetition(competitionName);
-
-                if (competitionDTO != null)
-                {
-                    competitions.Add(competitionDTO);
-                }
-
-            }
+            var competitions = competitionDTOs.Where(dto => dto != null).ToList();
 
             return Ok(competitions);
 
