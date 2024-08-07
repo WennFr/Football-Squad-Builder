@@ -1,34 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import footballField from '../../assets/football-field-1.jpg';
-import { fetchCompetitions } from '../../features/footballData-feature/api/competitionApi';
-import { Competition } from '../../features/footballData-feature/types';
+import { useCompetitions } from './hooks/useCompetitions';
+import { useClubs } from './hooks/useClubs';
 
 
 
 function LineupCreator() {
 
-    const [competitions, setCompetitions] = useState<Competition[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        const loadCompetitions = async () => {
-            try {
-                const data = await fetchCompetitions();
-                setCompetitions(data);
-                setLoading(false);
-            } catch (err) {
-                if (err instanceof Error) {
-                    setError(err.message);
-                } else {
-                    setError('An unknown error occurred');
-                }
-                setLoading(false);
-            }
-        };
-
-        loadCompetitions();
-    }, []);
+    const { competitions, loading: competitionsLoading, error: competitionsError } = useCompetitions();
+    const [selectedCompetition, setSelectedCompetition] = useState<string | null>(null);
+    const { clubs, loading: clubsLoading, error: clubsError } = useClubs(selectedCompetition);
+    const [selectedClub, setSelectedClub] = useState<string | null>(null);
 
     return (
         <>
@@ -40,7 +22,11 @@ function LineupCreator() {
                     <div className="football-field" style={{ backgroundImage: `url(${footballField})` }}></div>
                     <aside className='sidebar'>
                         <div className='sidebar-nav'>
-                            <select className='sidebar-dropdown'>
+                            <select 
+                                className='sidebar-dropdown'
+                                onChange={(e) => setSelectedCompetition(e.target.value)}
+                                value={selectedCompetition || ''}
+                            >
                                 <option value="">Select League</option>
                                 {competitions.map((competition) => (
                                     <option key={competition.id} value={competition.id}>
@@ -48,11 +34,17 @@ function LineupCreator() {
                                     </option>
                                 ))}
                             </select>
-                            <select className='sidebar-dropdown'>
+                            <select 
+                                className='sidebar-dropdown'
+                                onChange={(e) => setSelectedClub(e.target.value)}
+                                value={selectedClub || ''}
+                            >
                                 <option value="">Select Club</option>
-                                <option value="club1">Club 1</option>
-                                <option value="club2">Club 2</option>
-                                {/* Add more clubs as needed */}
+                                {clubs.map((club) => (
+                                    <option key={club.id} value={club.id}>
+                                        {club.name}
+                                    </option>
+                                ))}
                             </select>
                             <select className='sidebar-dropdown'>
                                 <option value="">Select Player</option>
