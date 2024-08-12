@@ -81,7 +81,31 @@ namespace App.WebAPI.Services
             return responseObj?.Players;
         }
 
+        public async Task<List<JerseyNumberDTO>> GetPlayerJerseyNumbers(string playerId)
+        {
 
+            var client = new HttpClient();
+
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri($"https://transfermarkt-api.fly.dev/players/{playerId}/jersey_numbers")
+            };
+
+            JerseyResponse? responseObj = null;
+
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync();
+
+                responseObj = JsonConvert.DeserializeObject<JerseyResponse>(body);
+
+            }
+
+            return responseObj?.JerseyNumbers;
+
+        }
 
     }
 }

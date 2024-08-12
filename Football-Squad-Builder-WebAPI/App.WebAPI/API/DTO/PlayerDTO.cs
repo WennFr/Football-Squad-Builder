@@ -13,5 +13,7 @@
         public string SignedFrom { get; set; }
         public string Contract { get; set; }
         public string MarketValue { get; set; }
+        public string JerseyNumber { get; set; }
+
     }
 }

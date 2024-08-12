@@ -11,6 +11,7 @@ export const useClubs = (competitionId: string | null) => {
         const loadClubs = async () => {
             if (competitionId) {
                 setLoading(true);
+                setClubs([]);
                 try {
                     const data = await fetchClubs(competitionId);
                     setClubs(data);

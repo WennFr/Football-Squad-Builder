@@ -11,6 +11,7 @@ export const usePlayers = (clubId: string | null) => {
         const loadPlayers = async () => {
             if (clubId) {
                 setLoading(true);
+                setPlayers([]);
                 try {
                     const data = await fetchPlayers(clubId);
                     setPlayers(data);
@@ -29,5 +30,5 @@ export const usePlayers = (clubId: string | null) => {
         loadPlayers();
     }, [clubId]);
 
-    return { players, loading, error };
+    return { players,setPlayers,loading, error };
 };

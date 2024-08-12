@@ -72,19 +72,35 @@ namespace App.WebAPI.Controllers
 
             var playerDTOs = await _transfermarktAPIService.GetAllClubPlayers(clubId);
 
+
             if (playerDTOs == null || playerDTOs.Count() == 0)
             {
                 return BadRequest();
             }
-            else
+
+
+            //var jeseyNumbers = await _transfermarktAPIService.GetPlayerJerseyNumbers("49800");
+
+
+            var tasks = playerDTOs.Select(async player =>
             {
-                return Ok(playerDTOs);
+                var jerseyNumbers = await _transfermarktAPIService.GetPlayerJerseyNumbers(player.Id);
+
+                var latestJerseyNumber = jerseyNumbers.FirstOrDefault()?.JerseyNumber;
+
+                player.JerseyNumber = latestJerseyNumber!;
+                return player;
+            });
+
+            var updatedPlayerDTOs = await Task.WhenAll(tasks);
+
+            if (updatedPlayerDTOs == null)
+            {
+                return BadRequest();
             }
 
+            return Ok(updatedPlayerDTOs);
+
         }
-
-
-
-
     }
 }

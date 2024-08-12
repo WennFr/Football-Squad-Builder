@@ -10,5 +10,7 @@ namespace App.WebAPI.Services
 
         Task<PlayerDTO[]?> GetAllClubPlayers(string clubId);
 
+        Task<List<JerseyNumberDTO>> GetPlayerJerseyNumbers(string playerId);
+
     }
 }
