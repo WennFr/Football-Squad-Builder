@@ -3,6 +3,7 @@ import footballField from '../../assets/football-field-1.jpg';
 import { useCompetitions } from './hooks/useCompetitions';
 import { useClubs } from './hooks/useClubs';
 import { usePlayers } from './hooks/usePlayers';
+import PlayerCard from '../partials/PlayerCard';
 
 
 
@@ -72,9 +73,10 @@ function LineupCreator() {
                                     <p>Select a club to see players</p>
                                 )}
                                 {!isLoading && players.length > 0 && (
+
                                     players.map((player) => (
                                         <ol key={player.id}>
-                                            {player.jerseyNumber} {player.name}
+                                            <PlayerCard key={player.id} player={player}/>
                                         </ol>
                                     ))
                                 )}

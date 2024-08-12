@@ -79,16 +79,14 @@ namespace App.WebAPI.Controllers
             }
 
 
-            //var jeseyNumbers = await _transfermarktAPIService.GetPlayerJerseyNumbers("49800");
-
-
             var tasks = playerDTOs.Select(async player =>
             {
+                var playerProfileDTO = await _transfermarktAPIService.GetPlayerProfile(player.Id);
                 var jerseyNumbers = await _transfermarktAPIService.GetPlayerJerseyNumbers(player.Id);
 
-                var latestJerseyNumber = jerseyNumbers.FirstOrDefault()?.JerseyNumber;
+                player.JerseyNumber = jerseyNumbers.FirstOrDefault()?.JerseyNumber;
+                player.ImageURL = playerProfileDTO.ImageURL;
 
-                player.JerseyNumber = latestJerseyNumber!;
                 return player;
             });
 
@@ -100,7 +98,9 @@ namespace App.WebAPI.Controllers
             }
 
             return Ok(updatedPlayerDTOs);
-
         }
+
+
+
     }
 }

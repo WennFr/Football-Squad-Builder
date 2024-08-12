@@ -11,4 +11,6 @@ export interface Player {
     contract: string;
     marketValue: string;
     jerseyNumber: string;
+    imageURL: string;
+
   }

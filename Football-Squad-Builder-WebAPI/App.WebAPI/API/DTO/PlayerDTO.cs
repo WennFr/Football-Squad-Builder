@@ -14,6 +14,7 @@
         public string Contract { get; set; }
         public string MarketValue { get; set; }
         public string JerseyNumber { get; set; }
+        public string ImageURL { get; set; }
 
     }
 }
