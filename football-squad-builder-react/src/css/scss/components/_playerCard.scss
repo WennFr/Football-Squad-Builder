@@ -1,5 +1,40 @@
-.playerCard{
-    height: 100px;
-    width: 300px;
-    border: 1px solid white;
+/// <reference path="../__references.scss" />
+@use '../tools' as *;
+
+.player-card{
+    position: relative;
+    height: 110px;
+    width: 340px;
+    background-color: $color-dark-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 5px;
+
+
+    &-img-container{
+        position: absolute; 
+        left: -55px; 
+        top: 50%; 
+        transform: translateY(-50%); 
+        z-index: 1;
+    }
+
+    &-img{
+        width: 110px;  
+        height: 110px; 
+        border-radius: 50%; 
+        object-fit: cover; 
+    }
+
+    &-profile{
+        font-size: 1.4rem;
+        margin-left: 70px; // Space to the right of the image
+        flex: 1; // Allow text section to grow and take up remaining space
+
+    }
+
+
+
 }

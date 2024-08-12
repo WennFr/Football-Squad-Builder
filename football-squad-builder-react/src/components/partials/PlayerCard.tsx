@@ -5,9 +5,17 @@
  function PlayerCard({ player }: { player: Player }) {
   return (
     <>
-    <div className='playerCard'>
-      <h3>{player.jerseyNumber} - {player.name}</h3>
-    </div>
+    <article className='player-card'>
+        <div className='player-card-img-container'>
+            <img className='player-card-img' src={player.imageURL} alt={`${player.name}'s image`} />
+        </div>
+
+        <div className='player-card-profile'>
+                <h3>#{player.jerseyNumber} {player.name}</h3>
+                <p>Age: {player.age}</p>
+                <p>{player.position}</p>
+        </div>
+    </article>
     </>
   )
 }
