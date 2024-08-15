@@ -1,0 +1,28 @@
+/// <reference path="../__references.scss" />
+@use '../tools' as *;
+
+.field-player {
+    color: $color-light-1;
+    max-width: 17rem;
+
+    &-img-container {
+        @include justify-center;
+        border-radius: 50%; 
+    }
+
+    &-img {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: $color-light-1; 
+
+    }
+
+    &-profile{
+        text-align: center;
+        font-size: 1.4rem;
+
+    }
+
+}

@@ -19,13 +19,15 @@
         top: 50%; 
         transform: translateY(-50%); 
         z-index: 1;
+
     }
 
     &-img{
         width: 110px;  
         height: 110px; 
         border-radius: 50%; 
-        object-fit: cover; 
+        object-fit: cover;
+        background-color: $color-light-1; 
     }
 
     &-profile{

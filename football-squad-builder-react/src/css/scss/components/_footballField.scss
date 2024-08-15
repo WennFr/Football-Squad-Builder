@@ -1,10 +1,20 @@
 .football-field{
-  background-size: auto; 
+  position: relative;
+  background-size: cover; 
   background-position: center;
   background-repeat: no-repeat; 
   min-height: 100vh;
+  height: auto;
   min-width: 36vw;
+  width: 50%;
   border-radius: 25px;
+  border: 8px dashed #ddd;
 
 
+ 
+
+}
+
+.lineup{
+  list-style-type: none;
 }
