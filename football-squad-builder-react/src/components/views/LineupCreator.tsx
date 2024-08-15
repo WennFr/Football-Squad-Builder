@@ -41,17 +41,19 @@ function LineupCreator() {
         if (destination.droppableId === 'field' && source.droppableId === 'players') {
             console.log('Player dropped on field:', draggableId);
 
-            const player = players.find(p => p.id === draggableId);
+            if (fieldPlayers.length < 11) {
+                const player = players.find(p => p.id === draggableId);
 
-            if (player != null) {
-                setFieldPlayers((prev) => {
-                    if (!prev.some(p => p.id === draggableId)) {
-                        return [...prev, player];
-                    }
-                    return prev;
-                });
+                if (player != null) {
+                    setFieldPlayers((prev) => {
+                        if (!prev.some(p => p.id === draggableId)) {
+                            return [...prev, player];
+                        }
+                        return prev;
+                    });
 
-                setPlayers(prev => prev.filter(p => p.id !== draggableId));
+                    setPlayers(prev => prev.filter(p => p.id !== draggableId));
+                }
             }
         }
 
@@ -74,11 +76,18 @@ function LineupCreator() {
             }
         }
 
-        else {
+        else if (destination.droppableId === 'players' && source.droppableId === 'players') {
             const reorderedPlayers = Array.from(players);
             const [removed] = reorderedPlayers.splice(result.source.index, 1);
             reorderedPlayers.splice(destination.index, 0, removed);
             setPlayers(reorderedPlayers);
+        }
+
+        else if (destination.droppableId === 'field' && source.droppableId === 'field') {
+            const reorderedPlayers = Array.from(fieldPlayers);
+            const [removed] = reorderedPlayers.splice(result.source.index, 1);
+            reorderedPlayers.splice(destination.index, 0, removed);
+            setFieldPlayers(reorderedPlayers);
         }
 
     };
