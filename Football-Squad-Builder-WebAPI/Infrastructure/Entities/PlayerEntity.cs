@@ -21,9 +21,9 @@ namespace Infrastructure.Entities
         public string? ImageURL { get; set; }
         public string GoalsThisSeason { get; set; } = null!;
         public string AssistsThisSeason { get; set; } = null!;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now.Date;
         public string ClubId { get; set; } = null!;
         public ClubEntity Club { get; set; } = null!;
-
 
     }
 }

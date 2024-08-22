@@ -11,7 +11,5 @@
         public string? MeanMarketValue { get; set; }
         public string? Continent { get; set; }
 
-
-
     }
 }
