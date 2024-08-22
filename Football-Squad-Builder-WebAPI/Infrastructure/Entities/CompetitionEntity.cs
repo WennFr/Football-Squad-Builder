@@ -11,7 +11,7 @@ namespace Infrastructure.Entities
         public string Id { get; set; } = null!;
         public string? Name { get; set; }
 
-        public ICollection<ClubEntity> Clubs { get; set; }
+        public ICollection<ClubEntity> Clubs { get; set; } = null!;
 
     }
 }

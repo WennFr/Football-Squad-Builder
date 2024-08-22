@@ -1,0 +1,15 @@
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\bin\Debug\net8.0\Infrastructure.runtimeconfig.json
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
+C:\Users\frede\Documents\Projects\Football-Squad-Builder\Football-Squad-Builder-WebAPI\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
