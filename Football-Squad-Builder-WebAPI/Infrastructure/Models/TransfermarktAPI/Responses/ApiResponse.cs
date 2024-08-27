@@ -1,4 +1,4 @@
-﻿namespace App.WebAPI.API.Responses
+﻿namespace Infrastructure.Models.TransfermarktAPI.Responses
 {
     public class ApiResponse<T>
     {

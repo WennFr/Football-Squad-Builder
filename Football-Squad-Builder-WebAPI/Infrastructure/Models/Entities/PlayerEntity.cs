@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Entities
+namespace Infrastructure.Models.Entities
 {
     public class PlayerEntity
     {

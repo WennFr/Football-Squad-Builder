@@ -1,6 +1,6 @@
-﻿using App.WebAPI.API.DTO;
+﻿using Infrastructure.Models.TransfermarktAPI.DTOs;
 
-namespace App.WebAPI.Services
+namespace Infrastructure.Handlers.Services.Interfaces
 {
     public interface ITransfermarktAPIService
     {

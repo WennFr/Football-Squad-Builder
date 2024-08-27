@@ -1,6 +1,6 @@
-﻿using App.WebAPI.API.DTO;
+﻿using Infrastructure.Models.TransfermarktAPI.DTOs;
 
-namespace App.WebAPI.API.Responses
+namespace Infrastructure.Models.TransfermarktAPI.Responses
 {
     public class ClubsResponse
     {

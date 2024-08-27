@@ -1,5 +1,5 @@
-﻿using App.WebAPI.API.DTO;
-using App.WebAPI.Services;
+﻿using Infrastructure.Handlers.Services.Interfaces;
+using Infrastructure.Models.TransfermarktAPI.DTOs;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 

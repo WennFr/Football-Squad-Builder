@@ -1,8 +1,9 @@
-﻿using App.WebAPI.API.DTO;
-using App.WebAPI.API.Responses;
+﻿using Infrastructure.Handlers.Services.Interfaces;
+using Infrastructure.Models.TransfermarktAPI.DTOs;
+using Infrastructure.Models.TransfermarktAPI.Responses;
 using Newtonsoft.Json;
 
-namespace App.WebAPI.Services
+namespace Infrastructure.Handlers.Services
 {
     public class TransfermarktAPIService : ITransfermarktAPIService
     {

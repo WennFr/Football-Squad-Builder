@@ -1,4 +1,4 @@
-﻿namespace App.WebAPI.API.DTO
+﻿namespace Infrastructure.Models.TransfermarktAPI.DTOs
 {
     public class PlayerDTO
     {
