@@ -39,9 +39,9 @@ namespace Infrastructure.Handlers.Repositories
         {
             try
             {
-                var entity = _context.Set<TEntity>().Where(expression);
+                var entities = _context.Set<TEntity>().Where(expression);
 
-                return entity;
+                return entities;
 
             }
             catch (Exception)

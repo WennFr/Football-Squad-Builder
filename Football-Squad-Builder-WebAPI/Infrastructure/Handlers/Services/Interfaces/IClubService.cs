@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Handlers.Services.Interfaces
 {
-    public interface ICompetitionService
+    public interface IClubService
     {
-        Task<IEnumerable<CompetitionDTO>> GetCompetitionsFromTransfermarktAPI();
+        Task<Dictionary<string, ClubDTO[]>> GetClubsWithCompetitionIdFromTransfermarktAPI();
 
-        Task<StatusMessage> CreateCompetition(CompetitionDTO competition);
+        Task<StatusMessage> CreateClub(string competitionId, ClubDTO clubDTO);
 
-        Task<bool> CheckIfCompetitionTableContainsAnyRecords();
+        Task<bool> CheckIfClubTableContainsAnyRecords();
 
     }
 }

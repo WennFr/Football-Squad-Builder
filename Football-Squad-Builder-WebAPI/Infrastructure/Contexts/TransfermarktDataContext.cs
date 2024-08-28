@@ -23,6 +23,7 @@ namespace Infrastructure.Contexts
         {
 
             modelBuilder.Entity<CompetitionEntity>()
+                .ToTable("Competition")
                 .HasKey(e => e.Id);
 
             modelBuilder.Entity<CompetitionEntity>()
@@ -32,6 +33,7 @@ namespace Infrastructure.Contexts
                 .IsRequired();
 
             modelBuilder.Entity<ClubEntity>()
+                .ToTable("Club")
                 .HasKey(e => e.Id);
 
             modelBuilder.Entity<ClubEntity>()
@@ -47,7 +49,8 @@ namespace Infrastructure.Contexts
                .IsRequired();
 
             modelBuilder.Entity<PlayerEntity>()
-               .HasKey(e => e.Id);
+                .ToTable("Player")
+                .HasKey(e => e.Id);
 
             modelBuilder.Entity<PlayerEntity>()
                 .HasOne(e => e.Club)

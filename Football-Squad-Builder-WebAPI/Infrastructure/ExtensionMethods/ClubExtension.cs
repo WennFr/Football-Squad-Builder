@@ -9,30 +9,25 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.ExtensionMethods
 {
-    public static class CompetitionExtension
+    public static class ClubExtension
     {
-        public static CompetitionEntity ConvertCompetitionDTOToCompetitionEntity(this CompetitionDTO c)
+        public static ClubEntity ConvertClubDTOToClubEntity(this ClubDTO c)
         {
             try
             {
                 if (c != null)
                 {
-                    var competition = new CompetitionEntity()
+                    var club = new ClubEntity()
                     {
                         Id = c.Id,
                         Name = c.Name,
-                       
+
                     };
-                    return competition;
+                    return club;
                 }
             }
             catch (Exception ex) { Debug.WriteLine(ex.Message); }
             return null!;
         }
-
-   
-
-
-
     }
 }

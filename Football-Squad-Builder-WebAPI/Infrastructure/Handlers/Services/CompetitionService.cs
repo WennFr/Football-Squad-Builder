@@ -60,7 +60,18 @@ namespace Infrastructure.Handlers.Services
 
         }
 
+        public async Task<bool> CheckIfCompetitionTableContainsAnyRecords()
+        {
+            var records = await _competitionRepository.GetAll(x => true);
 
+            if (records.Any())
+            {
+                return true;
+            }
+
+            return false;
+
+        }
 
 
 
