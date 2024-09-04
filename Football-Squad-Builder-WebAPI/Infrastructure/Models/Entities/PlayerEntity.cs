@@ -19,8 +19,8 @@ namespace Infrastructure.Models.Entities
         public string? MarketValue { get; set; }
         public string JerseyNumber { get; set; } = null!;
         public string? ImageURL { get; set; }
-        public string GoalsThisSeason { get; set; } = null!;
-        public string AssistsThisSeason { get; set; } = null!;
+        public string? GoalsThisSeason { get; set; }
+        public string? AssistsThisSeason { get; set; }
         public DateTime UpdatedAt { get; set; } = DateTime.Now.Date;
         public string ClubId { get; set; } = null!;
         public ClubEntity Club { get; set; } = null!;

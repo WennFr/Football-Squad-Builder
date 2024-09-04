@@ -65,40 +65,42 @@ namespace App.WebAPI.Controllers
 
         }
 
-        [HttpGet]
-        [Route("Players/{clubId}")]
-        public async Task<ActionResult<List<PlayerDTO>>> GetPlayersByClub(string clubId)
-        {
+        //[HttpGet]
+        //[Route("Players/{clubId}")]
+        //public async Task<ActionResult<List<PlayerDTO>>> GetPlayersByClub(string clubId)
+        //{
 
-            var playerDTOs = await _transfermarktAPIService.GetAllClubPlayers(clubId);
-
-
-            if (playerDTOs == null || playerDTOs.Count() == 0)
-            {
-                return BadRequest();
-            }
+        //    var playerDTOs = await _transfermarktAPIService.GetAllClubPlayers(clubId);
 
 
-            var tasks = playerDTOs.Select(async player =>
-            {
-                var playerProfileDTO = await _transfermarktAPIService.GetPlayerProfile(player.Id);
-                var jerseyNumbers = await _transfermarktAPIService.GetPlayerJerseyNumbers(player.Id);
+        //    if (playerDTOs == null || playerDTOs.Count() == 0)
+        //    {
+        //        return BadRequest();
+        //    }
 
-                player.JerseyNumber = jerseyNumbers.FirstOrDefault()?.JerseyNumber;
-                player.ImageURL = playerProfileDTO.ImageURL;
 
-                return player;
-            });
 
-            var updatedPlayerDTOs = await Task.WhenAll(tasks);
 
-            if (updatedPlayerDTOs == null)
-            {
-                return BadRequest();
-            }
+        //    var tasks = playerDTOs.Select(async player =>
+        //    {
+        //        var playerProfileDTO = await _transfermarktAPIService.GetPlayerProfile(player.Id);
+        //        var jerseyNumbers = await _transfermarktAPIService.GetPlayerJerseyNumbers(player.Id);
 
-            return Ok(updatedPlayerDTOs);
-        }
+        //        player.JerseyNumber = jerseyNumbers.FirstOrDefault()?.JerseyNumber;
+        //        player.ImageURL = playerProfileDTO.ImageURL;
+
+        //        return player;
+        //    });
+
+        //    var updatedPlayerDTOs = await Task.WhenAll(tasks);
+
+        //    if (updatedPlayerDTOs == null)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    return Ok(updatedPlayerDTOs);
+        //}
 
 
 

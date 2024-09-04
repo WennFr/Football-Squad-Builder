@@ -33,9 +33,22 @@ namespace Infrastructure.Handlers.Repositories
             return StatusMessage.Success;
         }
 
+        public async Task<StatusMessage> CreateBatchAsync(IEnumerable<TEntity> entities)
+        {
+            try
+            {
+                await _context.Set<TEntity>().AddRangeAsync(entities);
+                await _context.SaveChangesAsync();
+                return StatusMessage.Success;
+            }
+            catch (Exception)
+            {
+                return StatusMessage.Error;
+            }
+        }
 
 
-        public async Task<IQueryable<TEntity>> GetAll(Expression<Func<TEntity, bool>> expression)
+        public async Task<IQueryable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> expression)
         {
             try
             {

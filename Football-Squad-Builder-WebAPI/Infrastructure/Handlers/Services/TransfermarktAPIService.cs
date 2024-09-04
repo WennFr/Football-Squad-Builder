@@ -108,9 +108,8 @@ namespace Infrastructure.Handlers.Services
 
         }
 
-        public async Task<PlayerProfileDTO> GetPlayerProfile(string playerId)
+        public async Task<PlayerProfileDTO> GetPlayerProfile(string playerId, HttpClient client)
         {
-            var client = new HttpClient();
 
             var request = new HttpRequestMessage
             {
@@ -133,6 +132,30 @@ namespace Infrastructure.Handlers.Services
 
 
         }
+
+        public async Task<List<PlayerStatsDTO>> GetPlayerStats(string playerId, HttpClient client)
+        {
+
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri($"https://transfermarkt-api.fly.dev/players/{playerId}/stats")
+            };
+
+
+            PlayerStatsResponse? responseObj;
+
+            using(var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync();
+
+                responseObj = JsonConvert.DeserializeObject<PlayerStatsResponse>(body);
+            }
+
+            return responseObj?.Stats;
+        }
+
 
 
 

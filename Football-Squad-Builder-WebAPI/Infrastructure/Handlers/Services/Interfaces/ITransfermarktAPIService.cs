@@ -12,7 +12,9 @@ namespace Infrastructure.Handlers.Services.Interfaces
 
         Task<List<JerseyNumberDTO>> GetPlayerJerseyNumbers(string playerId);
 
-        Task<PlayerProfileDTO> GetPlayerProfile(string playerId);
+        Task<PlayerProfileDTO> GetPlayerProfile(string playerId, HttpClient client);
+
+        Task<List<PlayerStatsDTO>> GetPlayerStats(string playerId, HttpClient client);
 
     }
 }

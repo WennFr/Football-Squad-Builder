@@ -27,7 +27,7 @@ namespace Infrastructure.Handlers.Services
 
         public async Task<Dictionary<string, ClubDTO[]>> GetClubsWithCompetitionIdFromTransfermarktAPI()
         {
-            var competitions = await _competitionRepository.GetAll(x => true);
+            var competitions = await _competitionRepository.GetAllAsync(x => true);
 
             var clubsWithCompetitionId = new Dictionary<string, ClubDTO[]>();
 
@@ -56,7 +56,7 @@ namespace Infrastructure.Handlers.Services
 
         public async Task<bool> CheckIfClubTableContainsAnyRecords()
         {
-            var records = await _clubRepository.GetAll(x => true);
+            var records = await _clubRepository.GetAllAsync(x => true);
 
             if (records.Any())
             {

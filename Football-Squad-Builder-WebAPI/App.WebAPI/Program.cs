@@ -19,6 +19,8 @@ builder.Services.AddScoped<PlayerRepository>();
 builder.Services.AddScoped<ITransfermarktAPIService, TransfermarktAPIService>();
 builder.Services.AddScoped<ICompetitionService, CompetitionService>();
 builder.Services.AddScoped<IClubService, ClubService>();
+builder.Services.AddScoped<IPlayerService, PlayerService>();
+
 
 
 
@@ -74,22 +76,30 @@ using (var scope = app.Services.CreateScope())
 
     if (!await clubService.CheckIfClubTableContainsAnyRecords())
     {
-        var allCompetitionClubsDictionaries = await clubService.GetClubsWithCompetitionIdFromTransfermarktAPI();
+        var clubsByCompetition = await clubService.GetClubsWithCompetitionIdFromTransfermarktAPI();
 
-        foreach(var competitionClubDictionary in allCompetitionClubsDictionaries)
+        foreach(var competitionClubsPair in clubsByCompetition)
         {
-
-            foreach (var club in competitionClubDictionary.Value)
+            foreach (var club in competitionClubsPair.Value)
             {
-                await clubService.CreateClub(competitionClubDictionary.Key, club);
+                await clubService.CreateClub(competitionClubsPair.Key, club);
             }
         }
+    }
 
+    var playerService = scope.ServiceProvider.GetRequiredService<IPlayerService>();
 
+    if (!await playerService.CheckIfPlayerTableContainsAnyRecords())
+    {
+        var playersByClub = await playerService.GetPlayersWithClubIdFromTransfermarktAPI();
+
+        //foreach (var clubPlayersPair in playersByClub)
+        //{
+        //    await playerService.CreatePlayers(clubPlayersPair.Key, clubPlayersPair.Value);
+        //}
     }
 
 }
-
 
 
 app.Run();
