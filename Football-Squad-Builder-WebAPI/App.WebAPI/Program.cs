@@ -93,10 +93,10 @@ using (var scope = app.Services.CreateScope())
     {
         var playersByClub = await playerService.GetPlayersWithClubIdFromTransfermarktAPI();
 
-        //foreach (var clubPlayersPair in playersByClub)
-        //{
-        //    await playerService.CreatePlayers(clubPlayersPair.Key, clubPlayersPair.Value);
-        //}
+        foreach (var clubPlayersPair in playersByClub)
+        {
+            await playerService.CreatePlayers(clubPlayersPair.Key, clubPlayersPair.Value);
+        }
     }
 
 }

@@ -60,23 +60,51 @@ namespace Infrastructure.Handlers.Services
 
         public async Task<PlayerDTO[]?> GetAllClubPlayers(string clubId)
         {
-            var client = new HttpClient();
-
-            var request = new HttpRequestMessage
+            var client = new HttpClient()
             {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://transfermarkt-api.fly.dev/clubs/{clubId}/players")
+                Timeout = TimeSpan.FromMinutes(5)
             };
+
 
             PlayersResponse? responseObj = null;
 
-            using (var response = await client.SendAsync(request))
+            int retryCount = 0;
+            int maxRetries = 5;
+            int delay = 2000;
+
+
+            while (retryCount < maxRetries)
             {
-                response.EnsureSuccessStatusCode();
-                var body = await response.Content.ReadAsStringAsync();
+                try
+                {
+                    var request = new HttpRequestMessage
+                    {
+                        Method = HttpMethod.Get,
+                        RequestUri = new Uri($"https://transfermarkt-api.fly.dev/clubs/{clubId}/players")
+                    };
 
-                responseObj = JsonConvert.DeserializeObject<PlayersResponse>(body);
+                    using (var response = await client.SendAsync(request))
+                    {
+                        response.EnsureSuccessStatusCode();
+                        var body = await response.Content.ReadAsStringAsync();
 
+                        responseObj = JsonConvert.DeserializeObject<PlayersResponse>(body);
+
+                    }
+
+                    break;
+                }
+                catch (HttpRequestException ex)
+                {
+                    if (retryCount == maxRetries - 1)
+                    {
+                        throw new TimeoutException("The operation timed out.", ex);
+                    }
+
+                    retryCount++;
+                    await Task.Delay(delay);
+                    delay *= 2;
+                }
             }
 
             return responseObj?.Players;
@@ -85,7 +113,10 @@ namespace Infrastructure.Handlers.Services
         public async Task<List<JerseyNumberDTO>> GetPlayerJerseyNumbers(string playerId)
         {
 
-            var client = new HttpClient();
+            var client = new HttpClient()
+            {
+                Timeout = TimeSpan.FromMinutes(5)
+            };
 
             var request = new HttpRequestMessage
             {
@@ -111,23 +142,45 @@ namespace Infrastructure.Handlers.Services
         public async Task<PlayerProfileDTO> GetPlayerProfile(string playerId, HttpClient client)
         {
 
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://transfermarkt-api.fly.dev/players/{playerId}/profile")
-            };
-
             PlayerProfileDTO responseObj = null;
+            int retryCount = 0;
+            int maxRetries = 5;
+            int delay = 2000;
 
-            using (var response = await client.SendAsync(request))
+            while (retryCount < maxRetries)
             {
-                response.EnsureSuccessStatusCode();
-                var body = await response.Content.ReadAsStringAsync();
+                try
+                {
+                    var request = new HttpRequestMessage
+                    {
+                        Method = HttpMethod.Get,
+                        RequestUri = new Uri($"https://transfermarkt-api.fly.dev/players/{playerId}/profile")
+                    };
 
-                responseObj = JsonConvert.DeserializeObject<PlayerProfileDTO>(body);
+                    using (var response = await client.SendAsync(request))
+                    {
+                        response.EnsureSuccessStatusCode();
+                        var body = await response.Content.ReadAsStringAsync();
+
+                        responseObj = JsonConvert.DeserializeObject<PlayerProfileDTO>(body);
+                    }
+
+                    break;
+                }
+                catch (HttpRequestException ex)
+                {
+                    if (retryCount == maxRetries - 1)
+                    {
+                        throw new TimeoutException("The operation timed out.", ex);
+                    }
+
+                    retryCount++;
+
+                    await Task.Delay(delay);
+                    delay *= 2;
+                }
 
             }
-
             return responseObj;
 
 
@@ -136,24 +189,47 @@ namespace Infrastructure.Handlers.Services
         public async Task<List<PlayerStatsDTO>> GetPlayerStats(string playerId, HttpClient client)
         {
 
-            var request = new HttpRequestMessage
+
+            PlayerStatsResponse? responseObj = null;
+            int retryCount = 0;
+            int maxRetries = 5;
+            int delay = 2000;
+
+            while (retryCount < maxRetries)
             {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://transfermarkt-api.fly.dev/players/{playerId}/stats")
-            };
+                try
+                {
+                    var request = new HttpRequestMessage
+                    {
+                        Method = HttpMethod.Get,
+                        RequestUri = new Uri($"https://transfermarkt-api.fly.dev/players/{playerId}/stats")
+                    };
+                    using (var response = await client.SendAsync(request))
+                    {
+                        response.EnsureSuccessStatusCode();
+                        var body = await response.Content.ReadAsStringAsync();
 
+                        responseObj = JsonConvert.DeserializeObject<PlayerStatsResponse>(body);
+                    }
 
-            PlayerStatsResponse? responseObj;
+                    break;
+                }
+                catch (HttpRequestException ex)
+                {
+                    if (retryCount == maxRetries - 1)
+                    {
+                        throw new TimeoutException("The operation timed out.", ex);
+                    }
 
-            using(var response = await client.SendAsync(request))
-            {
-                response.EnsureSuccessStatusCode();
-                var body = await response.Content.ReadAsStringAsync();
+                    retryCount++;
+                    await Task.Delay(delay);
+                    delay *= 2;
 
-                responseObj = JsonConvert.DeserializeObject<PlayerStatsResponse>(body);
+                }
             }
 
             return responseObj?.Stats;
+
         }
 
 

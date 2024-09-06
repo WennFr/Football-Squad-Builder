@@ -2,6 +2,7 @@
 using Infrastructure.ExtensionMethods;
 using Infrastructure.Handlers.Repositories;
 using Infrastructure.Handlers.Services.Interfaces;
+using Infrastructure.Models.Entities;
 using Infrastructure.Models.TransfermarktAPI.DTOs;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,16 @@ namespace Infrastructure.Handlers.Services
             return status;
 
         }
+
+
+        public async Task<List<ClubEntity>> GetClubsByCompetitionId(string competitionId)
+        {
+            var clubs = await _clubRepository.GetAllAsync(x => x.CompetitionId == competitionId);
+
+            return clubs.ToList();
+        }
+
+
 
         public async Task<bool> CheckIfClubTableContainsAnyRecords()
         {

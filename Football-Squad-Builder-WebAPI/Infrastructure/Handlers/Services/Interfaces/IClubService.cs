@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Enums;
+using Infrastructure.Models.Entities;
 using Infrastructure.Models.TransfermarktAPI.DTOs;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace Infrastructure.Handlers.Services.Interfaces
         Task<Dictionary<string, ClubDTO[]>> GetClubsWithCompetitionIdFromTransfermarktAPI();
 
         Task<StatusMessage> CreateClub(string competitionId, ClubDTO clubDTO);
+
+        Task<List<ClubEntity>> GetClubsByCompetitionId(string competitionId);
 
         Task<bool> CheckIfClubTableContainsAnyRecords();
 

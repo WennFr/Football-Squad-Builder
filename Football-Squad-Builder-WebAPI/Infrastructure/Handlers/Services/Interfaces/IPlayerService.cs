@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Enums;
+using Infrastructure.Models.Entities;
 using Infrastructure.Models.TransfermarktAPI.DTOs;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace Infrastructure.Handlers.Services.Interfaces
         Task<StatusMessage> CreatePlayer(string clubId, PlayerDTO playerDTO);
 
         Task<StatusMessage> CreatePlayers(string clubId, PlayerDTO[] playersDTO);
+
+        Task<List<PlayerEntity>> GetPlayersByClubId(string clubId);
 
         Task<bool> CheckIfPlayerTableContainsAnyRecords();
 

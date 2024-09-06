@@ -32,7 +32,7 @@ namespace Infrastructure.Handlers.Services
         {
             var clubs = await _clubRepository.GetAllAsync(x => true);
             var playersWithClubId = new Dictionary<string, PlayerDTO[]>();
-            var httpClient = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
+            var httpClient = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
 
             foreach (var club in clubs)
             {
@@ -65,10 +65,9 @@ namespace Infrastructure.Handlers.Services
                 // Wait for all player tasks to complete
                 var updatedPlayers = await Task.WhenAll(playerTasks);
 
-
-                await CreatePlayers(club.Id, updatedPlayers);
-
                 playersWithClubId.Add(club.Id, updatedPlayers);
+
+               
 
             }
 
@@ -107,6 +106,15 @@ namespace Infrastructure.Handlers.Services
         }
 
 
+        public async Task<List<PlayerEntity>> GetPlayersByClubId(string clubId)
+        {
+            var players = await _playerRepository.GetAllAsync(x => x.ClubId == clubId);
+
+            return players.ToList();
+        }
+
+
+
         public async Task<bool> CheckIfPlayerTableContainsAnyRecords()
         {
             var records = await _playerRepository.GetAllAsync(x => true);
@@ -119,8 +127,6 @@ namespace Infrastructure.Handlers.Services
             return false;
 
         }
-
-
 
     }
 }

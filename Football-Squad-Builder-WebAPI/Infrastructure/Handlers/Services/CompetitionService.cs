@@ -2,6 +2,7 @@
 using Infrastructure.ExtensionMethods;
 using Infrastructure.Handlers.Repositories;
 using Infrastructure.Handlers.Services.Interfaces;
+using Infrastructure.Models.Entities;
 using Infrastructure.Models.TransfermarktAPI.DTOs;
 using System;
 using System.Collections.Generic;
@@ -59,6 +60,16 @@ namespace Infrastructure.Handlers.Services
             return status;
 
         }
+
+
+        public async Task<List<CompetitionEntity>> GetAllCompetitions()
+        {
+            var competitions = await _competitionRepository.GetAllAsync(x => true);
+
+            return competitions.ToList();
+        }
+
+
 
         public async Task<bool> CheckIfCompetitionTableContainsAnyRecords()
         {

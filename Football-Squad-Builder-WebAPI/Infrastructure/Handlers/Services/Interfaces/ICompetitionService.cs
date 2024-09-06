@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Enums;
+using Infrastructure.Models.Entities;
 using Infrastructure.Models.TransfermarktAPI.DTOs;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace Infrastructure.Handlers.Services.Interfaces
         Task<IEnumerable<CompetitionDTO>> GetCompetitionsFromTransfermarktAPI();
 
         Task<StatusMessage> CreateCompetition(CompetitionDTO competition);
+
+        Task<List<CompetitionEntity>> GetAllCompetitions();
 
         Task<bool> CheckIfCompetitionTableContainsAnyRecords();
 
