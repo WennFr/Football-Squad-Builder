@@ -1,7 +1,7 @@
 # Football Squad Builder In Progress!
 
 ## 📃Description
-This is a work in progress application where you can build your own custom lineups. It utilizes a third party API to retreive the data and stores it in a local DB. The UI is a web app with a graphical football field and a list of
+This is a work in progress application where you can build your own custom lineups. It utilizes a third party API to retreive competition, club and player data and stores it in a local DB. The UI is a web app with a graphical football field and a list of
 players where you can start constructing your own lineups by sorting players by competitions and clubs and dragging them on to the pitch.
 
 
